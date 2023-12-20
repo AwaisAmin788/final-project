@@ -58,7 +58,7 @@
 export default {
   data() {
     return {
-      logsData: [], // Data fetched from the backend
+      logsData: [],
       pagination: {
         page: 1,
         rowsPerPage: 10,
@@ -116,18 +116,17 @@ export default {
     },
   },
   mounted() {
-    // Fetch data from the backend and assign it to logsData
-    this.logsData = [
-      // Sample data, replace this with fetched data from your backend
-      {
-        id: 1,
-        name: "",
-        email: "",
-        activity: "",
-        time: "",
-      },
-      // Add more data objects here
-    ];
+    // Make an API call to fetch data from your backend
+    fetch('http://192.168.11.172:3000/get-applicants')
+      .then(response => response.json())
+      .then(data => {
+        // Assuming the response data is an array of objects with properties similar to your table columns
+        this.logsData = data;
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        // Handle errors appropriately, like displaying a message to the user
+      });
   },
 };
 </script>

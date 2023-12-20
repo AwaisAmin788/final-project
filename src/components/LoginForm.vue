@@ -35,6 +35,7 @@
                 :before="{ icon: 'email' }"
                 :class="{ 'error-field': emailError }"
               />
+              
               <q-input
                 filled
                 v-model="password"
@@ -148,7 +149,7 @@ export default {
 }
 
 .login-card {
-  width: 300px;
+  width: 600px;
   max-width: 90%;
   padding: 20px;
   border-radius: 8px;
@@ -236,4 +237,18 @@ export default {
   text-align: center;
   padding: 0 20px;
 }
+/* Define initial font sizes for different screen sizes */
+h3 {
+  font-size: 3vw; /* Adjust this value as needed */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  h3 {
+    font-size: 5vw; /* Change font size for smaller screens */
+  }
+}
+
+/* Additional media queries for other screen sizes if needed */
+
 </style>

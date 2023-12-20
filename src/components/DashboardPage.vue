@@ -1,4 +1,3 @@
-
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header class="header">
@@ -12,29 +11,21 @@
           <q-toolbar-title></q-toolbar-title>
 
           <!-- Login option on the right side -->
-          <router-link to="/userprofile" class="profilelink"
-            >Profile</router-link
-          >
-
+          <router-link to="/userprofile" class="profilelink">Profile</router-link>
           <button class="logout-button">
             <router-link to="/" class="logoutlink">Logout</router-link>
           </button>
         </q-toolbar>
       </q-header>
-
       <!-- Your header content goes here -->
       <!-- Example: Logo, Title, etc. -->
     </q-header>
 
-    <q-drawer show-if-above v-model="drawerLeft" side="left" bordered>
+    <q-drawer v-model="drawerLeft" side="left" bordered :show-if-above="$q.screen.lg">
       <div class="sidebar">
         <router-link to="/UserList" class="sidebar-link">UserList</router-link>
-        <router-link to="/ActivityLogs" class="sidebar-link"
-          >Activity Logs</router-link
-        >
-        <router-link to="/JobApplication" class="sidebar-link"
-          >Job Application</router-link
-        >
+        <router-link to="/ActivityLogs" class="sidebar-link">Activity Logs</router-link>
+        <router-link to="/JobApplication" class="sidebar-link">Job Application</router-link>
         <router-link to="" class="sidebar-link">Applicants list</router-link>
       </div>
     </q-drawer>
@@ -88,6 +79,7 @@
 <script>
 import ApplicantList from "@/components/ApplicantList.vue";
 import ChatBot from "@/components/ChatBot.vue";
+
 export default {
   components: {
     ApplicantList,
@@ -101,6 +93,15 @@ export default {
       statusOptions: ["Pending", "Accepted", "Rejected"],
       searchText: "",
     };
+  },
+  watch: {
+    '$q.screen.width'(val) {
+      if (val < this.$q.screen.lg) {
+        this.drawerLeft = false;
+      } else {
+        this.drawerLeft = true;
+      }
+    },
   },
   methods: {
     goToCreateUser() {

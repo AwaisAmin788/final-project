@@ -11,9 +11,10 @@
           <q-toolbar-title></q-toolbar-title>
 
           <!-- Login option on the right side -->
-          <router-link to="/JobApplication" class="loginlink text-white"
-            >Login</router-link
-          >
+          <button class="logout-button">
+            <router-link to="/" class="logoutlink">Logout</router-link>
+          </button>
+          
         </q-toolbar>
       </q-header>
       <q-page>

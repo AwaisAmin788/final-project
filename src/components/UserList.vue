@@ -109,7 +109,7 @@ export default {
   methods: {
     async fetchApplicants() {
       try {
-        const response = await fetch("YOUR_BACKEND_API_URL/applicants");
+        const response = await fetch("User list API");
         const data = await response.json();
         this.applicants = data.applicants;
       } catch (error) {

@@ -142,5 +142,6 @@ tr:hover {
 }
 .q-table {
   margin-top: 2px;
+  height: 2px;
 }
 </style>

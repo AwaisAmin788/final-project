@@ -58,6 +58,7 @@
                       type="submit"
                       :loading="resettingPassword"
                       :disable="!validPassword || !validConfirmPassword"
+                      @click="CallAPI"
                     />
                   </q-form>
                 </q-card>
@@ -102,7 +103,7 @@ export default {
       if (this.validPassword && this.validConfirmPassword) {
         this.resettingPassword = true;
         try {
-          await this.simulateAPI();
+          await this.simulateAPI("http://192.168.11.172:3000/user/setPassword/:email");
           this.newPassword = "";
           this.confirmPassword = "";
           this.resettingPassword = false;

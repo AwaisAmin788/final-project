@@ -80,7 +80,7 @@ export default {
         // Call your API here with this.email
         try {
           // Simulating API call with a timeout
-          await this.simulateAPI();
+          await this.simulateAPI("http://192.168.11.172:3000/user/forget-password/");
           this.email = "";
           this.resettingPassword = false;
           this.$q.notify({

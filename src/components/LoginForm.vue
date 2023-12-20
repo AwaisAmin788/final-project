@@ -1,19 +1,5 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header elevated>
-      <q-toolbar class="navbar">
-        <!-- Logo and Logo Name on the left side -->
-        <q-avatar>
-          <img class="joblogo" src="../assets/Myjoblogo.png" alt="Logo" />
-        </q-avatar>
-        <span class="logo-text">MyJob</span>
-        <q-toolbar-title></q-toolbar-title>
-
-        <!-- Login option on the right side -->
-        <router-link to="" class="loginlink">Login</router-link>
-      </q-toolbar>
-    </q-header>
-
     <q-page-container class="page-container" style="padding-top: 20px">
       <q-page class="login-page">
         <div class="grid-container">

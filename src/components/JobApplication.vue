@@ -3,14 +3,12 @@
     <q-header class="header">
       <q-header elevated>
         <q-toolbar class="navbar">
-          <!-- Logo and Logo Name on the left side -->
           <q-avatar>
             <img class="joblogo" src="../assets/Myjoblogo.png" alt="Logo" />
           </q-avatar>
           <span class="logo-text">MyJob</span>
           <q-toolbar-title></q-toolbar-title>
 
-          <!-- Login option on the right side -->
           <router-link to="/JobApplication" class="profilelink"
             >Profile</router-link
           >
@@ -20,9 +18,6 @@
           </button>
         </q-toolbar>
       </q-header>
-
-      <!-- Your header content goes here -->
-      <!-- Example: Logo, Title, etc. -->
     </q-header>
 
     <div class="job-application">
@@ -150,8 +145,8 @@ export default {
       if (this.resumeFile) {
         formData.append("resume", this.resumeFile);
       }
-      // Replace 'YOUR_BACKEND_API_URL' with your actual backend API endpoint
-      fetch("http://192.168.11.172:3000/submit-form ", {
+
+      fetch("http://192.168.11.172:3000/api/submit-form ", {
         method: "POST",
         body: formData,
       })
@@ -159,14 +154,24 @@ export default {
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
-          // Handle success response here
-          // e.g., show a success message
-          console.log("Form submitted successfully");
+
+          window.alert("Form submitted successfully");
+          this.clearFormFields();
         })
         .catch((error) => {
           // Handle error scenario
           console.error("There was a problem with form submission:", error);
         });
+    },
+    clearFormFields() {
+      this.userName = "";
+      this.email = "";
+      this.qualification = "";
+      this.cnic = "";
+      this.address = "";
+      this.phoneNumber = "";
+      this.age = "";
+      this.resumeFile = null;
     },
     submitFormAPI() {
       this.$refs.jobForm.validate().then((success) => {
@@ -188,6 +193,7 @@ export default {
         (value) => /.+@.+\..+/.test(value) || "Invalid email",
       ];
     },
+
     cnicRule() {
       return [
         (value) => !!value || "CNIC is required",

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div
-      class="chatbot-icon"
-      @click="toggleChat"
-      v-if="!showChat"
-    >
+    <div class="chatbot-icon" @click="toggleChat" v-if="!showChat">
       <img src="../assets/chatbot.png" alt="Chatbot Icon" />
     </div>
 
@@ -14,14 +10,14 @@
         <button @click="toggleChat">Close</button>
       </div>
       <div class="chat-content">
-        <p>Write your problem!</p>
+        <p>Hello!</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 export default {
   setup() {
@@ -33,9 +29,9 @@ export default {
 
     return {
       showChat,
-      toggleChat
+      toggleChat,
     };
-  }
+  },
 };
 </script>
 

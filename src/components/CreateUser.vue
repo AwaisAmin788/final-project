@@ -69,6 +69,7 @@
                   class="q-px-lg"
                 />
               </q-card-actions>
+              <ChatBot />
             </q-card>
           </q-form>
         </q-container>
@@ -93,7 +94,7 @@ export default {
       const token = localStorage.getItem("token");
       try {
         const response = await fetch(
-          "http://192.168.11.172:3000/user/createUser",
+          "http://192.168.11.172:3000/api/createUser",
           {
             method: "POST",
             headers: {
@@ -105,9 +106,8 @@ export default {
         );
 
         if (response.ok) {
-          // Successful API call, handle success as needed (e.g., show a success message)
           console.log("User created successfully!");
-          // Clear form fields after creating user
+
           this.user = {
             firstName: "",
             lastName: "",
@@ -130,7 +130,6 @@ export default {
 </script>
 
 <style scoped>
-/* Custom styles */
 .q-input__control {
   background-color: #f5f5f5;
   border-radius: 5px;
@@ -149,16 +148,14 @@ export default {
   border-radius: 5px;
 }
 .logo-text {
-  margin-left: 10px; /* Adjust spacing between logo and text */
-  font-size: 25px; /* Adjust font size as needed */
-  font-weight: bold; /* Optionally, adjust font weight */
-  color: white; /* Text color */
-  /* Add any other necessary styles for the logo text */
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
 }
 .logout-button {
-  /* Add your preferred button styles here */
   background-color: rgb(236, 9, 9);
-  color: white; /* to make the text readable on the red background */
+  color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;

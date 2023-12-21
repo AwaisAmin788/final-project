@@ -4,14 +4,12 @@
       <q-header class="header">
         <q-header elevated>
           <q-toolbar class="navbar">
-            <!-- Logo and Logo Name on the left side -->
             <q-avatar>
               <img class="joblogo" src="../assets/Myjoblogo.png" alt="Logo" />
             </q-avatar>
             <span class="logo-text">MyJob</span>
             <q-toolbar-title></q-toolbar-title>
 
-            <!-- Login option on the right side -->
             <router-link to="/JobApplication" class="profilelink"
               >Profile</router-link
             >
@@ -21,9 +19,6 @@
             </button>
           </q-toolbar>
         </q-header>
-
-        <!-- Your header content goes here -->
-        <!-- Example: Logo, Title, etc. -->
       </q-header>
 
       <q-page>
@@ -116,16 +111,13 @@ export default {
     },
   },
   mounted() {
-    // Make an API call to fetch data from your backend
-    fetch('http://192.168.11.172:3000/get-applicants')
-      .then(response => response.json())
-      .then(data => {
-        // Assuming the response data is an array of objects with properties similar to your table columns
+    fetch("http://192.168.11.172:3000/get-applicants")
+      .then((response) => response.json())
+      .then((data) => {
         this.logsData = data;
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-        // Handle errors appropriately, like displaying a message to the user
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   },
 };
@@ -162,16 +154,14 @@ export default {
   margin-top: 0px;
 }
 .logo-text {
-  margin-left: 10px; /* Adjust spacing between logo and text */
-  font-size: 25px; /* Adjust font size as needed */
-  font-weight: bold; /* Optionally, adjust font weight */
-  color: white; /* Text color */
-  /* Add any other necessary styles for the logo text */
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
 }
 .logout-button {
-  /* Add your preferred button styles here */
   background-color: rgb(236, 9, 9);
-  color: white; /* to make the text readable on the red background */
+  color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;

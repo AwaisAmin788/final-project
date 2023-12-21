@@ -9,6 +9,7 @@ import ApplicantList from "../components/ApplicantList.vue";
 import UserList from "../components/UserList.vue";
 import ActivityLogs from "../components/ActivityLogs.vue";
 import ChatBot from "../components/ChatBot.vue"
+
 const routes = [
   {
     path: "/",
@@ -61,6 +62,7 @@ const routes = [
     component:ChatBot,
 
   },
+  
 ];
 
 const router = createRouter({

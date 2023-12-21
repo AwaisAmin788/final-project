@@ -57,6 +57,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -78,32 +80,33 @@ export default {
     async resetPassword() {
       if (this.validEmail) {
         this.resettingPassword = true;
-        // Call your API here with this.email
+        
         try {
-          // Simulating API call with a timeout
-          await this.simulateAPI("http://192.168.11.172:3000/user/forget-password/");
-          this.email = "";
-          this.resettingPassword = false;
-          this.$q.notify({
-            color: "positive",
-            position: "top",
-            message: "Password reset email sent successfully!",
+          const response = await axios.post('http://192.168.11.172:3000/api/forget-password', {
+            email: this.email,
           });
+          
+          if (response.data.success) {
+            this.email = '';
+            this.resettingPassword = false;
+            this.$q.notify({
+              color: 'positive',
+              position: 'top',
+              message: 'Password reset email sent successfully!',
+            });
+          } else {
+            throw new Error('Password reset failed');
+          }
         } catch (error) {
-          console.error("Error:", error);
+          console.error('Error:', error);
           this.resettingPassword = false;
           this.$q.notify({
-            color: "negative",
-            position: "top",
-            message: "Failed to send reset email. Please try again.",
+            color: 'negative',
+            position: 'top',
+            message: 'Failed to send reset email. Please try again.',
           });
         }
       }
-    },
-    simulateAPI() {
-      return new Promise((resolve) => {
-        setTimeout(resolve, 2000); // Simulated API call delay
-      });
     },
   },
 };
@@ -119,8 +122,6 @@ export default {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  /* Updated styles to center the card */
   margin: 0 auto; /* Centers the card horizontally */
 }
 
@@ -133,22 +134,20 @@ export default {
 }
 
 .joblogo {
-  width: 100px; /* Increase or decrease the width as needed */
+  width: 100px;
   height: 70px;
 }
 
 .logo-text {
-  margin-left: 10px; /* Adjust spacing between logo and text */
-  font-size: 25px; /* Adjust font size as needed */
-  font-weight: bold; /* Optionally, adjust font weight */
-  color: white; /* Text color */
-  /* Add any other necessary styles for the logo text */
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
 }
 
-/* Responsive Styles */
 @media screen and (max-width: 576px) {
   .logo-text {
-    font-size: 20px; /* Modify font size for smaller screens */
+    font-size: 20px;
   }
 }
 </style>

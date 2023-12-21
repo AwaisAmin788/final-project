@@ -3,14 +3,12 @@
     <q-page-container class="userlist">
       <q-header elevated>
         <q-toolbar class="navbar">
-          <!-- Logo and Logo Name on the left side -->
           <q-avatar>
             <img class="joblogo" src="../assets/Myjoblogo.png" alt="Logo" />
           </q-avatar>
           <span class="logo-text">MyJob</span>
           <q-toolbar-title></q-toolbar-title>
 
-          <!-- Login option on the right side -->
           <router-link to="/JobApplication" class="profilelink"
             >Profile</router-link
           >
@@ -30,13 +28,12 @@
         :pagination="true"
         :rows-per-page-options="[10]"
       >
-        <!-- Slot for Action column -->
         <template v-slot:body-cell-action="{ row }">
           <q-td :props="props">
             <q-btn @click="viewApplicant(row)" color="primary" label="View" />
           </q-td>
         </template>
-        <!-- Slot for CV column -->
+
         <template v-slot:body-cell-cv="{ row }">
           <q-td :props="props">
             <q-btn
@@ -109,7 +106,9 @@ export default {
   methods: {
     async fetchApplicants() {
       try {
-        const response = await fetch("User list API");
+        const response = await fetch(
+          "http://192.168.11.172:3000/api/get-all-users"
+        );
         const data = await response.json();
         this.applicants = data.applicants;
       } catch (error) {
@@ -118,11 +117,9 @@ export default {
     },
     viewApplicant(applicant) {
       console.log("View Applicant:", applicant);
-      // Logic to view applicant details
     },
     downloadCV(applicant) {
       console.log("Download CV of Applicant:", applicant);
-      // Logic to download applicant's CV
     },
   },
 };
@@ -164,16 +161,14 @@ tr:hover {
   height: 70px;
 }
 .logo-text {
-  margin-left: 10px; /* Adjust spacing between logo and text */
-  font-size: 25px; /* Adjust font size as needed */
-  font-weight: bold; /* Optionally, adjust font weight */
-  color: white; /* Text color */
-  /* Add any other necessary styles for the logo text */
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
 }
 .logout-button {
-  /* Add your preferred button styles here */
   background-color: rgb(236, 9, 9);
-  color: white; /* to make the text readable on the red background */
+  color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;

@@ -88,7 +88,7 @@ export default {
     async fetchApplicants() {
       try {
         const response = await fetch(
-          "http://192.168.11.172:3000/get-applicants"
+          "http://192.168.11.172:3000/api/get-applicants"
         );
         const data = await response.json();
         this.applicants = data.applicants;
@@ -98,11 +98,9 @@ export default {
     },
     viewApplicant(applicant) {
       console.log("View Applicant:", applicant);
-      // Logic to view applicant details
     },
     downloadCV(applicant) {
       console.log("Download CV of Applicant:", applicant);
-      // Logic to download applicant's CV
     },
   },
 };
@@ -143,5 +141,34 @@ tr:hover {
 .q-table {
   margin-top: 2px;
   height: 2px;
+}
+.applist {
+  margin-top: 50px;
+  margin-left: 240px;
+  width: 100%;
+}
+
+.q-table {
+  margin-top: 2px;
+  height: 2px;
+}
+
+.q-table th {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+  padding: 12px;
+  text-align: left;
+}
+
+.q-table thead {
+  z-index: 1;
+}
+.q-table th {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+  padding: 12px;
+  text-align: left;
 }
 </style>

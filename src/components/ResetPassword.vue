@@ -3,14 +3,12 @@
     <q-page-container>
       <q-header elevated class="bg-primary">
         <q-toolbar class="navbar">
-          <!-- Logo and Logo Name on the left side -->
           <q-avatar>
             <img class="joblogo" src="../assets/Myjoblogo.png" alt="Logo" />
           </q-avatar>
           <span class="logo-text text-white">MyJob</span>
           <q-toolbar-title></q-toolbar-title>
 
-          <!-- Login option on the right side -->
           <button class="logout-button">
             <router-link to="/" class="logoutlink">Logout</router-link>
           </button>
@@ -105,7 +103,9 @@ export default {
       if (this.validPassword && this.validConfirmPassword) {
         this.resettingPassword = true;
         try {
-          await this.simulateAPI("http://192.168.11.172:3000/user/setPassword/:email");
+          await this.simulateAPI(
+            "http://192.168.11.172:3000/user/setPassword/:email"
+          );
           this.newPassword = "";
           this.confirmPassword = "";
           this.resettingPassword = false;
@@ -145,18 +145,16 @@ export default {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  /* Updated styles to center the card */
-  margin: 0 auto; /* Centers the card horizontally */
+  margin: 0 auto;
 }
 .logo-text {
-  margin-left: 10px; /* Adjust spacing between logo and text */
-  font-size: 25px; /* Adjust font size as needed */
-  font-weight: bold; /* Optionally, adjust font weight */
-  color: white; /* Text color */
-  /* Add any other necessary styles for the logo text */
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
 }
 .joblogo {
-  width: 100px; /* Increase or decrease the width as needed */
+  width: 100px;
   height: 70px;
 }
 .navbar {

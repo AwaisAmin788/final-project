@@ -35,7 +35,7 @@
                 :before="{ icon: 'email' }"
                 :class="{ 'error-field': emailError }"
               />
-              
+
               <q-input
                 filled
                 v-model="password"
@@ -107,7 +107,7 @@ export default {
       if (!this.emailError && !this.passwordError) {
         try {
           const response = await axios.post(
-            "http://192.168.11.172:3000/user/logIn",
+            "http://192.168.11.172:3000/api/logIn",
             {
               email: this.email,
               password: this.password,
@@ -117,7 +117,7 @@ export default {
           // Assuming the API returns a token upon successful login
           const { token } = response.data.data;
 
-          // Store the token in local storage or Vuex for further use
+          // Store the token in local storage
           localStorage.setItem("token", token);
 
           // After successful login, navigate programmatically
@@ -157,7 +157,7 @@ export default {
 }
 
 .error-field {
-  border-color: #ff0000; /* Red border color for error */
+  border-color: #ff0000;
 }
 .page-container {
   padding-left: 0px !important;
@@ -181,28 +181,24 @@ export default {
   }
 }
 
-/* Apply animation to the welcome message */
 .welcome-message {
   animation: fadeIn 1s ease forwards;
 }
 
-/* Style for the welcome drawer */
 .welcome-drawer {
-  background-color: #fff; /* Background color */
-  border: 1px solid #ccc; /* Border */
-  padding: 20px; /* Padding */
-  width: 250px; /* Width */
-  /* Add any other necessary styles for the drawer */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 250px;
 }
 .logo-text {
-  margin-left: 10px; /* Adjust spacing between logo and text */
-  font-size: 25px; /* Adjust font size as needed */
-  font-weight: bold; /* Optionally, adjust font weight */
-  color: white; /* Text color */
-  /* Add any other necessary styles for the logo text */
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
 }
 .joblogo {
-  width: 100px; /* Increase or decrease the width as needed */
+  width: 100px;
   height: 70px;
 }
 .title {
@@ -224,10 +220,10 @@ export default {
   font-size: 18px;
 }
 .spacer {
-  margin-right: 10px; /* Adjust the space between words */
+  margin-right: 10px;
 }
 .larger-text {
-  font-size: 55px; /* Change the size of the "Welcome" text */
+  font-size: 55px;
 }
 .grid-container {
   display: grid;
@@ -237,18 +233,14 @@ export default {
   text-align: center;
   padding: 0 20px;
 }
-/* Define initial font sizes for different screen sizes */
+
 h3 {
-  font-size: 3vw; /* Adjust this value as needed */
+  font-size: 3vw;
 }
 
-/* Media query for smaller screens */
 @media screen and (max-width: 768px) {
   h3 {
-    font-size: 5vw; /* Change font size for smaller screens */
+    font-size: 5vw;
   }
 }
-
-/* Additional media queries for other screen sizes if needed */
-
 </style>

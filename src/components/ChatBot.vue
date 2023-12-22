@@ -59,7 +59,7 @@ export default {
 
 .chat-window {
   position: fixed;
-  bottom: 90px; /* Adjust as needed */
+  bottom: 90px; 
   right: 20px;
   width: 300px;
   max-height: 400px;

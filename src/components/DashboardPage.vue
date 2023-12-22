@@ -3,29 +3,36 @@
     <q-header class="header">
       <q-header elevated>
         <q-toolbar class="navbar">
-          <!-- Logo and Logo Name on the left side -->
           <q-avatar>
             <img class="joblogo" src="../assets/Myjoblogo.png" alt="Logo" />
           </q-avatar>
           <span class="logo-text">MyJob</span>
           <q-toolbar-title></q-toolbar-title>
 
-          <!-- Login option on the right side -->
-          <router-link to="/userprofile" class="profilelink">Profile</router-link>
+          <router-link to="/userprofile" class="profilelink"
+            >Profile</router-link
+          >
           <button class="logout-button">
             <router-link to="/" class="logoutlink">Logout</router-link>
           </button>
         </q-toolbar>
       </q-header>
-      <!-- Your header content goes here -->
-      <!-- Example: Logo, Title, etc. -->
     </q-header>
 
-    <q-drawer v-model="drawerLeft" side="left" bordered :show-if-above="$q.screen.lg">
+    <q-drawer
+      v-model="drawerLeft"
+      side="left"
+      bordered
+      :show-if-above="$q.screen.lg"
+    >
       <div class="sidebar">
         <router-link to="/UserList" class="sidebar-link">UserList</router-link>
-        <router-link to="/ActivityLogs" class="sidebar-link">Activity Logs</router-link>
-        <router-link to="/JobApplication" class="sidebar-link">Job Application</router-link>
+        <router-link to="/ActivityLogs" class="sidebar-link"
+          >Activity Logs</router-link
+        >
+        <router-link to="/JobApplication" class="sidebar-link"
+          >Job Application</router-link
+        >
         <router-link to="" class="sidebar-link">Applicants list</router-link>
       </div>
     </q-drawer>
@@ -66,8 +73,7 @@
             <ChatBot />
 
             <q-dialog v-model="userPopup" persistent>
-              <!-- Your user information form component goes here -->
-              <!-- You'll create this later -->
+              <!-- our user information form component goes here -->
             </q-dialog>
           </div>
         </div>
@@ -95,7 +101,7 @@ export default {
     };
   },
   watch: {
-    '$q.screen.width'(val) {
+    "$q.screen.width"(val) {
       if (val < this.$q.screen.lg) {
         this.drawerLeft = false;
       } else {
@@ -114,7 +120,7 @@ export default {
 
 <style scoped>
 .dashboard {
-  height: calc(100vh - 64px); /* Adjust based on your header's height */
+  height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
 }
@@ -122,7 +128,6 @@ export default {
 .header {
   background-color: #3498db;
   color: #fff;
-  /* Add other header styles as needed */
 }
 
 .flex-container {
@@ -138,27 +143,22 @@ export default {
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
-  /* Add other button styles as needed */
 }
 
 .status-dropdown {
   min-width: 150px;
   margin-left: 50px;
-  /* Add dropdown styles */
 }
 
 .search-bar {
   flex: 1;
   margin-left: 50px;
-  /* Add search bar styles */
 }
 
 .sidebar {
   background-color: white;
   padding: 40px;
   margin-left: -80px;
-
-  /* Add sidebar styles */
 }
 
 .sidebar-link {
@@ -166,8 +166,6 @@ export default {
   margin-bottom: 10px;
   text-decoration: none;
   color: #333;
-
-  /* Add sidebar link styles */
 }
 .sidebar {
   margin-top: 50px;
@@ -181,9 +179,8 @@ export default {
 }
 
 .logout-button {
-  /* Add your preferred button styles here */
   background-color: rgb(236, 9, 9);
-  color: white; /* to make the text readable on the red background */
+  color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
@@ -192,30 +189,26 @@ export default {
 .sidebar-link {
   display: block;
   margin-bottom: 25px;
-  text-decoration: underline; /* Add underline to the sidebar links */
+  text-decoration: underline;
   color: #333;
-  /* Add sidebar link styles */
 }
 .navbar {
   height: 70px;
 }
 .logo-text {
-  margin-left: 10px; /* Adjust spacing between logo and text */
-  font-size: 25px; /* Adjust font size as needed */
-  font-weight: bold; /* Optionally, adjust font weight */
-  color: white; /* Text color */
-  /* Add any other necessary styles for the logo text */
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
 }
 .q-page-container {
   background-color: #f2f3f4;
 }
 .sidebar-link {
-  /* Your default styles for the links */
-  color: #000; /* Change the color as needed */
-  text-decoration: none; /* Remove underline */
+  color: #000;
+  text-decoration: none;
 
-  /* Transition for smooth effect (optional but recommended) */
-  transition: color 0.3s ease-in-out; /* Adjust timing as needed */
+  transition: color 0.3s ease-in-out;
 }
 
 /* Hover effect */

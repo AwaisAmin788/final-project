@@ -12,7 +12,7 @@
             <q-toolbar-title></q-toolbar-title>
 
             <!-- Login option on the right side -->
-            <router-link to="/JobApplication" class="profilelink"
+            <router-link to="" class="profilelink"
               >Profile</router-link
             >
 
@@ -21,9 +21,6 @@
             </button>
           </q-toolbar>
         </q-header>
-
-        <!-- Your header content goes here -->
-        <!-- Example: Logo, Title, etc. -->
       </q-header>
       <q-page>
         <q-container class="q-pa-md">

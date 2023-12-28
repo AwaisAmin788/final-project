@@ -8,21 +8,36 @@
         :pagination="true"
         :rows-per-page-options="[10]"
       >
-        <!-- Slot for Action column -->
-        <template v-slot:body-cell-action="{ row }">
-          <q-td :props="props">
-            <q-btn @click="viewApplicant(row)" color="primary" label="View" />
-          </q-td>
-        </template>
-        <!-- Slot for CV column -->
-        <template v-slot:body-cell-cv="{ row }">
-          <q-td :props="props">
-            <q-btn
-              @click="downloadCV(row)"
-              color="primary"
-              label="Download CV"
-            />
-          </q-td>
+        <template v-slot:body="props">
+          <q-tr :props="props" @click="onRowClick(props.row)">
+            <q-td key="id" :props="props">
+              {{ applicants.indexOf(props.row) + 1 }}
+            </q-td>
+            <q-td key="name" :props="props">
+              {{ props.row.userName }}
+            </q-td>
+            <q-td key="email" :props="props">
+              {{ props.row.email }}
+            </q-td>
+            <q-td key="age" :props="props">
+              {{props.row.age}}
+            </q-td>
+            <q-td key="status" :props="props">
+              {{props.row.status}}
+            </q-td>
+            <q-td key="action" :props="props">
+              <q-btn @click="viewApplicant(row)" color="primary" label="View" />
+              
+            </q-td>
+            <q-td key="cv" :props="props">
+              <q-btn
+                @click="downloadCV(row)"
+                color="primary"
+                label="Download CV"
+              />
+              
+            </q-td>
+          </q-tr>
         </template>
       </q-table>
     </q-page-container>
@@ -30,17 +45,18 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       applicants: [],
       columns: [
         {
-          name: "applicantId",
+          name: "id",
           required: true,
-          label: "Applicant ID",
+          label: "ID",
           align: "left",
-          field: "applicantId",
+          field: "id",
         },
         {
           name: "name",
@@ -87,11 +103,11 @@ export default {
   methods: {
     async fetchApplicants() {
       try {
-        const response = await fetch(
-          "http://192.168.11.172:3000/api/get-applicants"
-        );
-        const data = await response.json();
-        this.applicants = data.applicants;
+        await axios
+          .get("http://192.168.11.172:3000/api/get-applicants")
+          .then((response) => {
+            this.applicants = response?.data?.data?.data;
+          });
       } catch (error) {
         console.error("Error fetching applicants:", error);
       }
@@ -141,6 +157,7 @@ tr:hover {
 .q-table {
   margin-top: 2px;
   height: 2px;
+  align-items: center;
 }
 .applist {
   margin-top: 50px;

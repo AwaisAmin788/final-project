@@ -118,7 +118,7 @@ export default {
           const { token } = response.data.data;
 
           // Store the token in local storage
-          localStorage.setItem("token", token);
+          localStorage.setItem("token", JSON.stringify(token));
 
           // After successful login, navigate programmatically
           router.push("/DashboardPage");

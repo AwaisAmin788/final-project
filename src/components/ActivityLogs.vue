@@ -110,6 +110,7 @@ export default {
       return this.logsData.slice(startIndex, endIndex);
     },
   },
+  //life cycle hooks
   mounted() {
     fetch("http://192.168.11.172:3000/get-applicants")
       .then((response) => response.json())
